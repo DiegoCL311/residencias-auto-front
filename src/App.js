@@ -1,15 +1,11 @@
 import "./App.css";
 import Button from "@mui/material/Button";
-import { Nombre, Nombre2 } from "./components/ComponenteBase";
+import { Menu } from "./components/Menu";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Button variant="contained">Hello World</Button>
-        <Nombre />
-        <Nombre2 />
-      </header>
+        <Menu />
     </div>
   );
 }
