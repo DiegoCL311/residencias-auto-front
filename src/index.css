@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.login{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  background-color: #C8D4E6;
+  width: 50%;
+  height: 80%;
+}
+
+.loginb{
+  top: 60%;
+  left: 28%;
+  position: absolute;
+  background-color: white;
+  height: 30%;
+  width: 45%;
+}
