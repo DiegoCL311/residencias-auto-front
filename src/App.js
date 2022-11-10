@@ -1,7 +1,10 @@
 import "./App.css";
 import { Menu } from "./components/Menu";
+import ComponenteBase, { Nombre } from "./components/ComponenteBase";
+import { Login } from "./components/Login";
 import { FormReportePreliminar } from "./components/FormReportePreliminar";
 import { LandingPage } from "./components/LandingPage";
+import { Login } from "./components/Login";
 import {
   browserRouter,
   Switch,
@@ -22,7 +25,7 @@ function App() {
           />
           <Route path="/" element={<LandingPage />} />
 
-          <Route path="/login" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
