@@ -4,7 +4,6 @@ import ComponenteBase, { Nombre } from "./components/ComponenteBase";
 import { Login } from "./components/Login";
 import { FormReportePreliminar } from "./components/FormReportePreliminar";
 import { LandingPage } from "./components/LandingPage";
-import { Login } from "./components/Login";
 import {
   browserRouter,
   Switch,
