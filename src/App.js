@@ -1,11 +1,12 @@
 import "./App.css";
-import Button from "@mui/material/Button";
 import { Menu } from "./components/Menu";
+import { FormReportePreliminar } from "./components/FormReportePreliminar";
 
 function App() {
   return (
     <div className="App">
-        <Menu />
+      <Menu />
+      <FormReportePreliminar />
     </div>
   );
 }

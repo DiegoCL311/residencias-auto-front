@@ -9,13 +9,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MyTemporaryDrawer } from "./MyDrawer";
 
 export function Menu() {
-  const [state, setState] = React.useState({
-    open: false,
-  });
+  const [state, setState] = React.useState(false);
 
   function goLogIn() {}
+
   function toggleDrawer() {
-    setState({ open: !state.open });
+    setState(!state);
   }
 
   return (
@@ -28,17 +27,12 @@ export function Menu() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={(event) => {
-              toggleDrawer();
-            }}
+            onClick={toggleDrawer}
           >
             <MenuIcon />
           </IconButton>
 
-          <MyTemporaryDrawer
-            open={state.open}
-            onAction={() => toggleDrawer()}
-          />
+          <MyTemporaryDrawer open={state} onAction={toggleDrawer} />
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Residencias
