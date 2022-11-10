@@ -1,8 +1,8 @@
 import "./App.css";
-import Button from "@mui/material/Button";
 import { Menu } from "./components/Menu";
 import ComponenteBase, { Nombre } from "./components/ComponenteBase";
 import { Login } from "./components/Login";
+import { FormReportePreliminar } from "./components/FormReportePreliminar";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Menu />
 
         <Login />
+
     </div>
   );
 }
