@@ -7,6 +7,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
+import { Link } from "react-router-dom";
 
 export function MyTemporaryDrawer(props) {
   function list() {
@@ -18,20 +19,20 @@ export function MyTemporaryDrawer(props) {
       >
         <List>
           {[
-            "Reporte X",
-            "Reporte Y",
-            "Reporte Z",
-            "Reporte A",
-            "Reporte B",
-            "Reporte C",
-            "Reporte D",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
+            { title: "Reporte preliminar", route: "/reportePreliminar" },
+            { title: "Reporte X", route: "/" },
+            { title: "Reporte Y", route: "/" },
+            { title: "Reporte Z", route: "/" },
+            { title: "Reporte A", route: "/" },
+            { title: "Reporte B", route: "/" },
+            { title: "Reporte C", route: "/" },
+          ].map((nav, index) => (
+            <ListItem key={nav.title} disablePadding>
+              <ListItemButton component={Link} to={nav.route}>
                 <ListItemIcon>
                   <ArticleIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={nav.title} />
               </ListItemButton>
             </ListItem>
           ))}

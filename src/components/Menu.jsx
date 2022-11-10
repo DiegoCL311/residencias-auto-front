@@ -37,7 +37,7 @@ export function Menu() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Residencias
           </Typography>
-          <Button onClick={goLogIn} color="inherit">
+          <Button onClick={goLogIn} color="inherit" href="/login">
             Login
           </Button>
         </Toolbar>
