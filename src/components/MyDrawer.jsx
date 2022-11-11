@@ -20,12 +20,12 @@ export function MyTemporaryDrawer(props) {
         <List>
           {[
             { title: "Reporte preliminar", route: "/reportePreliminar" },
-            { title: "Reporte X", route: "/" },
+            { title: "Evaluacion reporte X", route: "/evalReporteX" },
             { title: "Reporte Y", route: "/" },
             { title: "Reporte Z", route: "/" },
             { title: "Reporte A", route: "/" },
             { title: "Reporte B", route: "/" },
-            { title: "Reporte C", route: "/" },
+            { title: "Chat con asesor", route: "/chat" },
           ].map((nav, index) => (
             <ListItem key={nav.title} disablePadding>
               <ListItemButton component={Link} to={nav.route}>

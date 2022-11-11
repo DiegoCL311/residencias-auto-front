@@ -7,7 +7,7 @@ import {
   Autocomplete,
   Chip,
 } from "@mui/material";
-import MyStepper from "./MyStepper";
+import MyStepper from "../components/MyStepper";
 
 import * as React from "react";
 

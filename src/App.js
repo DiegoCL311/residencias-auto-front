@@ -1,9 +1,9 @@
 import "./App.css";
 import { Menu } from "./components/Menu";
-import ComponenteBase, { Nombre } from "./components/ComponenteBase";
-import { Login } from "./components/Login";
-import { FormReportePreliminar } from "./components/FormReportePreliminar";
-import { LandingPage } from "./components/LandingPage";
+import { Login } from "./pages/Login";
+import { Chat } from "./pages/Chat";
+import { FormReportePreliminar } from "./pages/FormReportePreliminar";
+import { LandingPage } from "./pages/LandingPage";
 import {
   browserRouter,
   Switch,
@@ -25,6 +25,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
 
           <Route path="/login" element={<Login />} />
+
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </BrowserRouter>
     </div>
