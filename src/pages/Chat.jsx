@@ -4,7 +4,6 @@ import { Paper } from "@mui/material";
 import { TextInput } from "../components/TextInput";
 import { MessageLeft, MessageRight } from "../components/Message";
 
-
 const useStyles = makeStyles((Theme) =>
   createStyles({
     paper: {
@@ -15,7 +14,7 @@ const useStyles = makeStyles((Theme) =>
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
-      position: "relative"
+      position: "relative",
     },
     paper2: {
       width: "80vw",
@@ -23,29 +22,34 @@ const useStyles = makeStyles((Theme) =>
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
-      position: "relative"
+      position: "relative",
     },
     container: {
       width: "90vw",
       height: "90vh",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
     },
     messagesBody: {
       width: "calc( 100% - 20px )",
       margin: 10,
       overflowY: "scroll",
-      height: "calc( 100% - 80px )"
-    }
+      height: "calc( 100% - 80px )",
+    },
   })
 );
 
 export function Chat() {
   const classes = useStyles();
+
+  function onSendMsg(msg) {
+    console.log("Chat, valor msg=", msg);
+  }
+
   return (
     <div className={classes.container}>
-      <Paper className={classes.paper} zDepth={2} elevation={12}>
+      <Paper className={classes.paper} elevation={12}>
         <Paper id="style-1" className={classes.messagesBody}>
           <MessageLeft
             message="Mensaje1 Largo -------------------------------------------------------------------"
@@ -76,7 +80,7 @@ export function Chat() {
             avatarDisp={true}
           />
         </Paper>
-        <TextInput />
+        <TextInput onSendMessage={onSendMsg} />
       </Paper>
     </div>
   );

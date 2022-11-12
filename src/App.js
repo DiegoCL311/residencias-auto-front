@@ -4,13 +4,9 @@ import { Login } from "./pages/Login";
 import { Chat } from "./pages/Chat";
 import { FormReportePreliminar } from "./pages/FormReportePreliminar";
 import { LandingPage } from "./pages/LandingPage";
-import {
-  browserRouter,
-  Switch,
-  Route,
-  BrowserRouter,
-  Routes,
-} from "react-router-dom";
+import { EvalReporte } from "./pages/EvalReporte.jsx";
+
+import { Switch, Route, BrowserRouter, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -27,6 +23,8 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/chat" element={<Chat />} />
+
+          <Route path="/evalReporteResidenciaProfesional" element={<EvalReporte />} />
         </Routes>
       </BrowserRouter>
     </div>

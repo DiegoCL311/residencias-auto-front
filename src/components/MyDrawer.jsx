@@ -20,7 +20,7 @@ export function MyTemporaryDrawer(props) {
         <List>
           {[
             { title: "Reporte preliminar", route: "/reportePreliminar" },
-            { title: "Evaluacion reporte X", route: "/evalReporteX" },
+            { title: "Evaluacion reporte de residencias profesional", route: "/evalReporteResidenciaProfesional" },
             { title: "Reporte Y", route: "/" },
             { title: "Reporte Z", route: "/" },
             { title: "Reporte A", route: "/" },

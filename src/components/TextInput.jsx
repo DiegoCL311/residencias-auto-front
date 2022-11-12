@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 
 const useStyles = makeStyles((theme) =>
@@ -21,8 +21,14 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export const TextInput = () => {
+export const TextInput = (props) => {
   const classes = useStyles();
+  const [msg, setMsg] = React.useState("");
+
+  function onChangeTF(evt) {
+    setMsg(evt.target.value);
+  }
+
   return (
     <>
       <form className={classes.wrapForm} noValidate autoComplete="off">
@@ -30,9 +36,17 @@ export const TextInput = () => {
           id="standard-text"
           label="Escribe un mensaje"
           className={classes.wrapText}
-          //margin="normal"
+          value={msg}
+          onChange={onChangeTF}
         />
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={() => {
+            props.onSendMessage(msg);
+          }}
+        >
           <SendIcon />
         </Button>
       </form>
