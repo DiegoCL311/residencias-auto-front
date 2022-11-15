@@ -21,10 +21,10 @@ export function MyTemporaryDrawer(props) {
           {[
             { title: "Reporte preliminar", route: "/reportePreliminar" },
             { title: "Evaluacion reporte de residencias profesional", route: "/evalReporteResidenciaProfesional" },
-            { title: "Reporte Y", route: "/" },
-            { title: "Reporte Z", route: "/" },
-            { title: "Reporte A", route: "/" },
-            { title: "Reporte B", route: "/" },
+            { title: "Evaluacion y seguimiento de residencia profesional", route: "/formSeguimientoAsesorInterno" },
+            { title: "Evaluacion y seguimiento de residencia profesional", route: "/formSeguimientoAsesorExterno" },
+            { title: "Registro de Asesoria", route: "/formRegistroAsesoria" },
+            { title: "Reporte Final", route: "/reporteFinal" },
             { title: "Chat con asesor", route: "/chat" },
           ].map((nav, index) => (
             <ListItem key={nav.title} disablePadding>

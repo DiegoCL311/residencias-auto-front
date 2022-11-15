@@ -173,6 +173,7 @@ export function FormReportePreliminar(props) {
                   value={formDatos.empresaNombre}
                   label="Nombre de la empresa"
                   variant="standard"
+                  multiline
                   sx={{ width: "100%" }}
                   onChange={changeValueDatos}
                 />
