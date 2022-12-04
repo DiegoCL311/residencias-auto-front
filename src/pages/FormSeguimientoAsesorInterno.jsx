@@ -92,7 +92,7 @@ export function FormSeguimientoAsesorInterno() {
   return (
     <div>
       <Typography variant="h4" sx={{ textAlign: "center", my: "2vh" }}>
-        Formato de evaluacion y seguimiento de residencia profesional
+        Formato de evaluacion y seguimiento de residencia profesional Asesor Interno
       </Typography>
 
       <Typography variant="subtitle1" sx={{ textAlign: "center", my: "2vh" }}>

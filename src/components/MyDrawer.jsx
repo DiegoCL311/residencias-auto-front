@@ -6,7 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ArticleIcon from "@mui/icons-material/Article";
+//import ArticleIcon from "@mui/icons-material/Article";
 import { Link } from "react-router-dom";
 
 export function MyTemporaryDrawer(props) {
@@ -21,8 +21,8 @@ export function MyTemporaryDrawer(props) {
           {[
             { title: "Reporte preliminar", route: "/reportePreliminar" },
             { title: "Evaluacion reporte de residencias profesional", route: "/evalReporteResidenciaProfesional" },
-            { title: "Evaluacion y seguimiento de residencia profesional", route: "/formSeguimientoAsesorInterno" },
-            { title: "Evaluacion y seguimiento de residencia profesional", route: "/formSeguimientoAsesorExterno" },
+            { title: "Evaluacion y seguimiento de residencia profesional Asesor Interno", route: "/formSeguimientoAsesorInterno" },
+            { title: "Evaluacion y seguimiento de residencia profesional Asesor Externo", route: "/formSeguimientoAsesorExterno" },
             { title: "Registro de Asesoria", route: "/formRegistroAsesoria" },
             { title: "Reporte Final", route: "/reporteFinal" },
             { title: "Chat con asesor", route: "/chat" },
@@ -30,7 +30,7 @@ export function MyTemporaryDrawer(props) {
             <ListItem key={nav.title} disablePadding>
               <ListItemButton component={Link} to={nav.route}>
                 <ListItemIcon>
-                  <ArticleIcon />
+
                 </ListItemIcon>
                 <ListItemText primary={nav.title} />
               </ListItemButton>
