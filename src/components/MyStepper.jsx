@@ -31,7 +31,7 @@ export default function HorizontalLinearStepper(props) {
 
           <Button
             onClick={
-              props.active === props.steps.length ? props.hazAlgo : props.onNext
+              props.active === props.steps.length ? props.onFinish : props.onNext
             }
           >
             {props.active === props.steps.length ? "Terminar" : "Siguiente"}

@@ -8,53 +8,63 @@ import {
   Chip,
 } from "@mui/material";
 import MyStepper from "../components/MyStepper";
+import axios from "axios";
 
 import * as React from "react";
 
 export function FormReportePreliminar(props) {
   const [formDatos, setFormDatos] = React.useState({
-    proyectoNombre: "",
-    proyectoComoRealizarlo: "",
-    asesoresInternosPropuestos: [],
-    asesorExterno: "",
-    empresaNombre: "",
-    nombreResidente: "",
-    apellidoResidente: "",
-    noControl: "",
-    carreraResidente: "",
-    domicilioResidente: "",
-    coloniaResidente: "",
-    codigoPostalResidente: "",
-    ciudadResidente: "",
-    paisResidente: "",
-    seguridadSocialAcudir: "",
-    numerodeSeguridadSocial: "",
-    sexo: "",
-    correoInstitucional: "",
-    numCelular: "",
-    correoPersonal: "",
-    telefonoCasa: "",
-    giroRamoSector: "",
-    rfcEmpresa: "",
-    domicilioEmpresa: "",
-    coloniaEmpresa: "",
-    codigoPostalEmpresa: "",
-    ciudadEmpresa: "",
-    faxEmpresa: "",
-    telefonoEmpresa: "",
-    extEmpresa: "",
-    nombreTitularEmpresa: "",
-    puestoTitular: "",
-    nombreAExterno: "",
-    puestoAExterno: "",
-    areaEmpresaAExterno: "",
-    correoAExterno: "",
-    numTelefonoAExterno: "",
-    objetivoProyeto: "",
-    objetivosEspecificos: [],
-    delimitacionProyecto: "",
-    justificacionProyecto: "",
-    cronogramaActividades: [],
+    //Datos de portada
+    PortadaProyectoNombre: "",
+    PortadaProyectoRealizacion: "",
+    PortadaAsesoresInternosPropuestos: [],
+    PortadaAsesorExterno: "",
+    PortadaEmpresaNombre: "",
+
+    //Datos del residente
+    ResidenteNombre: "",
+    ResidenteApellido: "",
+    ResidenteNoControl: "",
+    ResidenteCarrera: "",
+    ResidenteDomicilio: "",
+    ResidenteColonia: "",
+    ResidenteCodigoPostal: "",
+    ResidenteCiudad: "",
+    ResidentePais: "",
+    ResidenteSeguridadSocialAcudir: "",
+    ResidenteNumerodeSeguridadSocial: "",
+    ResidenteSexo: "",
+    ResidenteCorreoInstitucional: "",
+    ResidenteCorreoPersonal: "",
+    ResidenteNumCelular: "",
+    ResidenteTelefonoCasa: "",
+
+    //Datos de la empresa
+    EmpresaGiroRamoSector: "",
+    EmpresaRFC: "",
+    EmpresaDomicilio: "",
+    EmpresaColonia: "",
+    EmpresaCodigoPostal: "",
+    EmpresaCiudad: "",
+    EmpresaFax: "",
+    EmpresaTelefono: "",
+    EmpresaExt: "",
+    EmpresaNombreTitular: "",
+    EmpresaPestoTitular: "",
+
+    //Datos del asesor externo
+    AExternoNombre: "",
+    AExternoPuesto: "",
+    AExternoAreaEmpresa: "",
+    AExternoCorreo: "",
+    AExternoNumTelefono: "",
+
+    //Datos del reporte preliminar
+    RepPreObjetivoProyeto: "",
+    RepPreObjetivosEspecificos: [],
+    RepPreDelimitacionProyecto: "",
+    RepPreJustificacionProyecto: "",
+    RepPreCronogramaActividades: [],
   });
 
   function changeValueDatos(params) {
@@ -66,8 +76,18 @@ export function FormReportePreliminar(props) {
 
   const [activeStep, setActiveStep] = React.useState(0);
 
-  function hazAlgo() {
-    console.table(formDatos);
+  async function hazAlgo() {
+    try {
+      let response = await axios({
+        method: "post",
+        url: "http://localhost:3002/reportePreliminar",
+        data: formDatos,
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const handleNext = () => {
@@ -98,8 +118,8 @@ export function FormReportePreliminar(props) {
             <Grid container spacing={4} sx={{ minHeight: "30vh" }}>
               <Grid item xs={12}>
                 <TextField
-                  id="proyectoNombre"
-                  value={formDatos.proyectoNombre}
+                  id="PortadaProyectoNombre"
+                  value={formDatos.PortadaProyectoNombre}
                   label="Nombre del proyecto"
                   variant="standard"
                   onChange={changeValueDatos}
@@ -109,8 +129,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={12}>
                 <TextField
-                  id="proyectoComoRealizarlo"
-                  value={formDatos.proyectoComoRealizarlo}
+                  id="PortadaProyectoRealizacion"
+                  value={formDatos.PortadaProyectoRealizacion}
                   label="Como se realizará"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -124,15 +144,15 @@ export function FormReportePreliminar(props) {
                     if (value.length < 4) {
                       setFormDatos({
                         ...formDatos,
-                        asesoresInternosPropuestos: value,
+                        PortadaAsesoresInternosPropuestos: value,
                       });
                     }
                   }}
                   value={formDatos.asesoresInternosPropuestos}
                   multiple
                   variant="standard"
-                  id="asesoresInternosPropuestos"
-                  options={formDatos.asesoresInternosPropuestos.map(
+                  id="PortadaAsesoresInternosPropuestos"
+                  options={formDatos.PortadaAsesoresInternosPropuestos.map(
                     (option) => option
                   )}
                   freeSolo
@@ -158,8 +178,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={12}>
                 <TextField
-                  id="asesorExterno"
-                  value={formDatos.asesorExterno}
+                  id="PortadaAsesorExterno"
+                  value={formDatos.PortadaAsesorExterno}
                   label="Nombre del asesor externo"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -170,7 +190,7 @@ export function FormReportePreliminar(props) {
               <Grid item xs={12}>
                 <TextField
                   id="empresaNombre"
-                  value={formDatos.empresaNombre}
+                  value={formDatos.PortadaEmpresaNombre}
                   label="Nombre de la empresa"
                   variant="standard"
                   multiline
@@ -190,8 +210,8 @@ export function FormReportePreliminar(props) {
             <Grid container spacing={4} sx={{ minHeight: "30vh" }}>
               <Grid item xs={6}>
                 <TextField
-                  id="nombreResidente"
-                  value={formDatos.nombreResidente}
+                  id="ResidenteNombre"
+                  value={formDatos.ResidenteNombre}
                   label="Nombre del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -201,8 +221,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="apellidoResidente"
-                  value={formDatos.apellidoResidente}
+                  id="ResidenteApellido"
+                  value={formDatos.ResidenteApellido}
                   label="Apellido del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -212,8 +232,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="noControl"
-                  value={formDatos.noControl}
+                  id="ResidenteNoControl"
+                  value={formDatos.ResidenteNoControl}
                   label="Numero de control"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -223,8 +243,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="carreraResidente"
-                  value={formDatos.carreraResidente}
+                  id="ResidenteCarrera"
+                  value={formDatos.ResidenteCarrera}
                   label="Carrera del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -234,8 +254,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="domicilioResidente"
-                  value={formDatos.domicilioResidente}
+                  id="ResidenteDomicilio"
+                  value={formDatos.ResidenteDomicilio}
                   label="Domicilio del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -245,8 +265,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="coloniaResidente"
-                  value={formDatos.coloniaResidente}
+                  id="ResidenteColonia"
+                  value={formDatos.ResidenteColonia}
                   label="Colonia del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -256,8 +276,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="codigoPostalResidente"
-                  value={formDatos.codigoPostalResidente}
+                  id="ResidenteCodigoPostal"
+                  value={formDatos.ResidenteCodigoPostal}
                   label="Codigo postal del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -267,8 +287,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="ciudadResidente"
-                  value={formDatos.ciudadResidente}
+                  id="ResidenteCiudad"
+                  value={formDatos.ResidenteCiudad}
                   label="Ciudad del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -278,8 +298,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="paisResidente"
-                  value={formDatos.paisResidente}
+                  id="ResidentePais"
+                  value={formDatos.ResidentePais}
                   label="Pais del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -289,8 +309,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={5}>
                 <TextField
-                  id="seguridadSocialAcudir"
-                  value={formDatos.seguridadSocialAcudir}
+                  id="ResidenteSeguridadSocialAcudir"
+                  value={formDatos.ResidenteSeguridadSocialAcudir}
                   label="Seguridad social a la que acudir"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -300,8 +320,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={5}>
                 <TextField
-                  id="numerodeSeguridadSocial"
-                  value={formDatos.numerodeSeguridadSocial}
+                  id="ResidenteNumerodeSeguridadSocial"
+                  value={formDatos.ResidenteNumerodeSeguridadSocial}
                   label="Numero de seguridad social"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -311,8 +331,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={2}>
                 <TextField
-                  id="sexo"
-                  value={formDatos.sexo}
+                  id="ResidenteSexo"
+                  value={formDatos.ResidenteSexo}
                   label="Genero del residente"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -322,8 +342,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="correoInstitucional"
-                  value={formDatos.correoInstitucional}
+                  id="ResidenteCorreoInstitucional"
+                  value={formDatos.ResidenteCorreoInstitucional}
                   label="Correo institucional"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -333,8 +353,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="correoPersonal"
-                  value={formDatos.correoPersonal}
+                  id="ResidenteCorreoPersonal"
+                  value={formDatos.ResidenteCorreoPersonal}
                   label="Correo personal"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -344,8 +364,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="numCelular"
-                  value={formDatos.numCelular}
+                  id="ResidenteNumCelular"
+                  value={formDatos.ResidenteNumCelular}
                   label="Numero de celular"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -355,8 +375,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="telefonoCasa"
-                  value={formDatos.telefonoCasa}
+                  id="ResidenteTelefonoCasa"
+                  value={formDatos.ResidenteTelefonoCasa}
                   label="Telefono de casa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -375,8 +395,8 @@ export function FormReportePreliminar(props) {
             <Grid container spacing={4} sx={{ minHeight: "30vh" }}>
               <Grid item xs={6}>
                 <TextField
-                  id="giroRamoSector"
-                  value={formDatos.giroRamoSector}
+                  id="EmpresaGiroRamoSector"
+                  value={formDatos.EmpresaGiroRamoSector}
                   label="Giro, ramo o sector"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -386,8 +406,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="rfcEmpresa"
-                  value={formDatos.rfcEmpresa}
+                  id="EmpresaRFC"
+                  value={formDatos.EmpresaRFC}
                   label="RFC"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -397,8 +417,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="domicilioEmpresa"
-                  value={formDatos.domicilioEmpresa}
+                  id="EmpresaDomicilio"
+                  value={formDatos.EmpresaDomicilio}
                   label="RFC"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -408,8 +428,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="coloniaEmpresa"
-                  value={formDatos.coloniaEmpresa}
+                  id="EmpresaColonia"
+                  value={formDatos.EmpresaColonia}
                   label="Colonia de la empresa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -419,8 +439,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="codigoPostalEmpresa"
-                  value={formDatos.codigoPostalEmpresa}
+                  id="EmpresaCodigoPostal"
+                  value={formDatos.EmpresaCodigoPostal}
                   label="Codigo postal de la empresa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -430,8 +450,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="ciudadEmpresa"
-                  value={formDatos.ciudadEmpresa}
+                  id="EmpresaCiudad"
+                  value={formDatos.EmpresaCiudad}
                   label="Ciudad de la empresa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -441,8 +461,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="faxEmpresa"
-                  value={formDatos.faxEmpresa}
+                  id="EmpresaFax"
+                  value={formDatos.EmpresaFax}
                   label="Fax de la empresa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -452,8 +472,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="telefonoEmpresa"
-                  value={formDatos.telefonoEmpresa}
+                  id="EmpresaTelefono"
+                  value={formDatos.EmpresaTelefono}
                   label="Telefono de la empresa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -463,8 +483,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="extEmpresa"
-                  value={formDatos.extEmpresa}
+                  id="EmpresaExt"
+                  value={formDatos.EmpresaExt}
                   label="Extension de la empresa"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -474,8 +494,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={8}>
                 <TextField
-                  id="nombreTitularEmpresa"
-                  value={formDatos.nombreTitularEmpresa}
+                  id="EmpresaNombreTitular"
+                  value={formDatos.EmpresaNombreTitular}
                   label="Nombre del titular"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -485,8 +505,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={4}>
                 <TextField
-                  id="puestoTitular"
-                  value={formDatos.puestoTitular}
+                  id="EmpresaPestoTitular"
+                  value={formDatos.EmpresaPestoTitular}
                   label="Puesto del titular"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -504,8 +524,8 @@ export function FormReportePreliminar(props) {
             <Grid container spacing={4} sx={{ minHeight: "30vh" }}>
               <Grid item xs={12}>
                 <TextField
-                  id="nombreAExterno"
-                  value={formDatos.nombreAExterno}
+                  id="AExternoNombre"
+                  value={formDatos.AExternoNombre}
                   label="Nombre del asesor externo"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -515,8 +535,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="puestoAExterno"
-                  value={formDatos.puestoAExterno}
+                  id="AExternoPuesto"
+                  value={formDatos.AExternoPuesto}
                   label="Puesto del asesor externo"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -526,8 +546,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="areaEmpresaAExterno"
-                  value={formDatos.areaEmpresaAExterno}
+                  id="AExternoAreaEmpresa"
+                  value={formDatos.AExternoAreaEmpresa}
                   label="Area de la empresa del asesor externo"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -537,8 +557,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="correoAExterno"
-                  value={formDatos.correoAExterno}
+                  id="AExternoCorreo"
+                  value={formDatos.AExternoCorreo}
                   label="Correo del asesor externo"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -548,8 +568,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={6}>
                 <TextField
-                  id="numTelefonoAExterno"
-                  value={formDatos.numTelefonoAExterno}
+                  id="AExternoNumTelefono"
+                  value={formDatos.AExternoNumTelefono}
                   label="Numero de telefono del asesor externo"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -567,8 +587,8 @@ export function FormReportePreliminar(props) {
             <Grid container spacing={4} sx={{ minHeight: "30vh" }}>
               <Grid item xs={12}>
                 <TextField
-                  id="objetivoProyeto"
-                  value={formDatos.objetivoProyeto}
+                  id="RepPreObjetivoProyeto"
+                  value={formDatos.RepPreObjetivoProyeto}
                   label="Objetivo del proyecto"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -580,15 +600,15 @@ export function FormReportePreliminar(props) {
                 <Autocomplete
                   multiple
                   variant="standard"
-                  id="objetivosEspecificos "
-                  options={formDatos.objetivosEspecificos.map(
+                  id="RepPreObjetivosEspecificos "
+                  options={formDatos.RepPreObjetivosEspecificos.map(
                     (option) => option
                   )}
-                  value={formDatos.objetivosEspecificos}
+                  value={formDatos.RepPreObjetivosEspecificos}
                   onChange={(event, value) => {
                     setFormDatos({
                       ...formDatos,
-                      objetivosEspecificos: value,
+                      RepPreObjetivosEspecificos: value,
                     });
                   }}
                   freeSolo
@@ -615,8 +635,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={12}>
                 <TextField
-                  id="delimitacionProyecto"
-                  value={formDatos.delimitacionProyecto}
+                  id="RepPreDelimitacionProyecto"
+                  value={formDatos.RepPreDelimitacionProyecto}
                   label="Delimitacion del proyecto"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -626,8 +646,8 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={12}>
                 <TextField
-                  id="justificacionProyecto"
-                  value={formDatos.justificacionProyecto}
+                  id="RepPreJustificacionProyecto"
+                  value={formDatos.RepPreJustificacionProyecto}
                   label="Justificacion del proyecto"
                   variant="standard"
                   sx={{ width: "100%" }}
@@ -640,17 +660,17 @@ export function FormReportePreliminar(props) {
                   multiple
                   aria-multiline
                   variant="standard"
-                  id="cronogramaActividades "
-                  options={formDatos.cronogramaActividades.map(
+                  id="RepPreCronogramaActividades "
+                  options={formDatos.RepPreCronogramaActividades.map(
                     (option) => option
                   )}
                   onChange={(event, value) => {
                     setFormDatos({
                       ...formDatos,
-                      cronogramaActividades: value,
+                      RepPreCronogramaActividades: value,
                     });
                   }}
-                  value={formDatos.cronogramaActividades}
+                  value={formDatos.RepPreCronogramaActividades}
                   freeSolo
                   renderTags={(value, getTagProps) =>
                     value.map((option, index) => (
