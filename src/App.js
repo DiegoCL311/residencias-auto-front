@@ -10,6 +10,9 @@ import { FormSeguimientoAsesorExterno } from "./pages/FormSeguimientoAsesorExter
 import { Switch, Route, BrowserRouter, Routes } from "react-router-dom";
 import { FormReporteFinal } from "./pages/FormReporteFinal";
 import { FormRegistroAsesoria } from "./pages/FormRegistroAsesoria";
+import {EvaluacionAcademia} from "./pages/EvaluacionAcademia";
+import {TodosProyectos} from "./pages/TodosProyectos";
+import {BancoProyectos} from "./pages/BancoProyectos";
 
 function App() {
   return (
@@ -36,6 +39,11 @@ function App() {
           <Route path="/reporteFinal" element={<FormReporteFinal />} />
 
           <Route path="/formRegistroAsesoria" element={<FormRegistroAsesoria/>} />
+          
+          <Route path="/EvaluacionAcademia" element={<EvaluacionAcademia/>} />
+
+          <Route path="/TodosProyectos" element={<TodosProyectos/>} />
+      
         </Routes>
       </BrowserRouter>
     </div>

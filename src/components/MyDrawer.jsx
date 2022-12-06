@@ -25,6 +25,9 @@ export function MyTemporaryDrawer(props) {
             { title: "Evaluacion y seguimiento de residencia profesional Asesor Externo", route: "/formSeguimientoAsesorExterno" },
             { title: "Registro de Asesoria", route: "/formRegistroAsesoria" },
             { title: "Reporte Final", route: "/reporteFinal" },
+            { title: "Evaluacion Academia", route: "/EvaluacionAcademia" },
+            { title: "Proyectos de Residencias", route: "/TodosProyectos" },
+            { title: "Banco de Proyectos", route: "/BancoProyectos" },
             { title: "Chat con asesor", route: "/chat" },
           ].map((nav, index) => (
             <ListItem key={nav.title} disablePadding>
