@@ -34,9 +34,32 @@ code {
 
   display: inline-block;
   margin-left:80%;
+  color: #7badfa;
 
 }
 .button2{
   background-color:rgb(58, 216, 241) ;
   margin-left: 50%;
 }
+.demo {
+  width:20%;
+  border:1px sólido #C0C0C0;
+  border-collapse:colapso;
+  padding:5px;
+}
+.demo th {
+  border:1px sólido #C0C0C0;
+  padding:5px;
+  background:#7badfa;
+}
+.demo td {
+  border:1px sólido #C0C0C0;
+  padding:5px;
+}
+
+
+.tftable {font-size:0px;color:#0c0c0c;height: 100%;width:100%;border-width: 1px;border-color: #3abcf8;border-collapse: collapse;}
+.tftable th {font-size:12px;background-color:#7eb9f4;border-width: 1px;padding: 8px;border-style: solid;border-color: #050707;text-align:left;}
+.tftable tr {background-color:#e0e7f3;}
+.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #090b0b;}
+.tftable tr:hover {background-color:#ffffff;}

@@ -93,12 +93,14 @@ import { green } from "@mui/material/colors";
 
      
               <Button color="warning" variant="contained" >Rechazar</Button>
+              
+    
               <div className="button1">
               <Button color="primary" variant="contained" >Aceptar</Button>
               </div>
 
 
-          
+            
         </Paper>
       </Grid>
     );
