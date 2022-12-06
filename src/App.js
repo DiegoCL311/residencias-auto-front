@@ -40,7 +40,7 @@ function App() {
 
           <Route path="/formRegistroAsesoria" element={<FormRegistroAsesoria/>} />
           
-          <Route path="/EvaluacionAcademia" element={<EvaluacionAcademia/>} />
+          <Route path="/EvaluacionAcademia/:id" element={<EvaluacionAcademia/>} />
 
           <Route path="/TodosProyectos" element={<TodosProyectos/>} />
 
