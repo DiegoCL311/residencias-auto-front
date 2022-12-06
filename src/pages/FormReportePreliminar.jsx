@@ -18,7 +18,6 @@ export function FormReportePreliminar(props) {
     PortadaProyectoNombre: "",
     PortadaProyectoRealizacion: "",
     PortadaAsesoresInternosPropuestos: [],
-    PortadaAsesorExterno: "",
     PortadaEmpresaNombre: "",
 
     //Datos del residente
@@ -65,6 +64,31 @@ export function FormReportePreliminar(props) {
     RepPreDelimitacionProyecto: "",
     RepPreJustificacionProyecto: "",
     RepPreCronogramaActividades: [],
+  });
+
+  const [asesoresInternos, setAsesoresInternos] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchAsesores() {
+      try {
+        let response = await axios({
+          method: "get",
+          url: "http://localhost:3002/asesores_internos",
+        });
+
+        setAsesoresInternos(response.data.recordset);
+        console.log(response.data.recordset);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchAsesores();
+  }, []);
+
+  React.useEffect(() => {
+    // Update the document title using the browser API
+    console.log("UE", formDatos.PortadaAsesoresInternosPropuestos);
   });
 
   function changeValueDatos(params) {
@@ -140,37 +164,22 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={12}>
                 <Autocomplete
-                  onChange={(event, value) => {
-                    if (value.length < 4) {
-                      setFormDatos({
-                        ...formDatos,
-                        PortadaAsesoresInternosPropuestos: value,
-                      });
-                    }
-                  }}
-                  value={formDatos.asesoresInternosPropuestos}
                   multiple
-                  variant="standard"
                   id="PortadaAsesoresInternosPropuestos"
-                  options={formDatos.PortadaAsesoresInternosPropuestos.map(
-                    (option) => option
-                  )}
-                  freeSolo
-                  renderTags={(value, getTagProps) =>
-                    value.map((option, index) => (
-                      <Chip
-                        variant="standard"
-                        label={option}
-                        {...getTagProps({ index })}
-                      />
-                    ))
-                  }
+                  onChange={(event, value) => {
+                    setFormDatos({
+                      ...formDatos,
+                      PortadaAsesoresInternosPropuestos: value,
+                    });
+                  }}
+                  options={asesoresInternos}
+                  getOptionLabel={(option) => option.NOMBRE}
                   renderInput={(params) => (
                     <TextField
                       {...params}
                       variant="standard"
                       label="Asesores internos propuestos"
-                      placeholder="Asesor interno"
+                      placeholder="Asesores internos"
                     />
                   )}
                 />
@@ -178,18 +187,7 @@ export function FormReportePreliminar(props) {
 
               <Grid item xs={12}>
                 <TextField
-                  id="PortadaAsesorExterno"
-                  value={formDatos.PortadaAsesorExterno}
-                  label="Nombre del asesor externo"
-                  variant="standard"
-                  sx={{ width: "100%" }}
-                  onChange={changeValueDatos}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  id="empresaNombre"
+                  id="PortadaEmpresaNombre"
                   value={formDatos.PortadaEmpresaNombre}
                   label="Nombre de la empresa"
                   variant="standard"
@@ -419,7 +417,7 @@ export function FormReportePreliminar(props) {
                 <TextField
                   id="EmpresaDomicilio"
                   value={formDatos.EmpresaDomicilio}
-                  label="RFC"
+                  label="Domicilio"
                   variant="standard"
                   sx={{ width: "100%" }}
                   onChange={changeValueDatos}
